@@ -1,35 +1,44 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import axios from 'axios'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post('http://localhost:3001/users', {
+        user: {
+          name,
+          email,
+          password,
+          passwordConfirmation: passwordConfirmation
+        }
+      });
+      console.log("Success:", res.data);
+    } catch (err) {
+      console.error("Error:", err.response?.data || err.message);
+    }
+  };
 
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h1>Sign Up</h1>
+        <form onSubmit={handleSubmit}>
+          <input value ={name} onChange={(e)=> setName(e.target.value)} placeholder='Name'/>
+          <input value ={email} onChange={(e)=> setEmail(e.target.value)} placeholder='Email'/>
+          <input type="password" value={password}onChange={(e)=> setPassword(e.target.value)} placeholder='Password'/>
+          <input type="password" value ={passwordConfirmation} onChange={(e)=> setPasswordConfirmation(e.target.value)} placeholder='Password Confirmation'/>
+          <button type="submit">Sign Up</button>
+        </form>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
 export default App
