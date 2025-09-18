@@ -9,15 +9,18 @@ function App() {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
   // e is an event object of the handleSubmit function, which is passed when onSubmit
+  // same as "async function handleSubmit(e){...}"
   const handleSubmit = async (e) => {
+
     //  prevent reload
     e.preventDefault();
     console.log("イベントオブジェクト e:", e);
     console.log("フォーム要素:", e.target);
+    console.log("フォームデータ:", Object.fromEntries(new FormData(e.target)));
 
     // try/catch syntax (JS)
     try {
-      // pass url and data
+      //if success, pass url and data
       const res = await axios.post(
         'http://localhost:3001/users',
         {
@@ -25,14 +28,13 @@ function App() {
             name,
             email,
             password,
-            passwordConfirmation: passwordConfirmation
+            password_confirmation: passwordConfirmation
           }
         }
       );
       console.log("Success:", res.data);
     } catch (err) {
-      // error message
-      // err......
+      // if fail, error message
       console.error("Error:", err.response?.data || err.message);
     }
   };
