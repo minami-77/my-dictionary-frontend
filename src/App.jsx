@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router';
 import './App.css'
+import Home from './pages/Home';
 import Signup from './components/Signup';
 
 function App() {
