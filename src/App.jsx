@@ -1,14 +1,15 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router';
 import './App.css'
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import Signup from './components/Signup';
+import Mypage from './pages/Mypage/Mypage';
 
 function App() {
   return (
 
     <Routes>
       <Route path="/" element={<Home/>}/>
-      <Route/>
+      <Route path="mypage" element={<Mypage/>}/>
       <Route/>
       <Route/>
 
