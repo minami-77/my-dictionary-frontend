@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 function Signup() {
   const [name, setName] = useState("");
@@ -7,6 +8,7 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,8 +21,11 @@ function Signup() {
           password_confirmation: passwordConfirmation,
         },
       });
+
       setMessage("✅ サインアップ成功！");
+      navigate("/mypage");
       console.log("Success:", res.data);
+
     } catch (err) {
       const err_message = `❌ サインアップ失敗… ${err.response?.data?.status?.message}`
       setMessage(err_message);
