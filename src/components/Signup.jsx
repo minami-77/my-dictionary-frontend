@@ -22,7 +22,8 @@ function Signup() {
       setMessage("✅ サインアップ成功！");
       console.log("Success:", res.data);
     } catch (err) {
-      setMessage("❌ サインアップ失敗…", err.response?.data || err.message);
+      const err_message = `❌ サインアップ失敗… ${err.response.data}`
+      setMessage(err_message);
       console.error("Error:", err.response?.data || err.message);
     }
   };
