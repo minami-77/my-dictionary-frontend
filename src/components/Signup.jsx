@@ -22,8 +22,9 @@ function Signup() {
       setMessage("✅ サインアップ成功！");
       console.log("Success:", res.data);
     } catch (err) {
-      const err_message = `❌ サインアップ失敗… ${err.response?.data?.message}`
+      const err_message = `❌ サインアップ失敗… ${err.response?.data?.status?.message}`
       setMessage(err_message);
+      // if there's no data from JSON(err.response.data), display html message(err.message)
       console.error("Error:", err.response?.data || err.message);
     }
   };
