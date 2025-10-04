@@ -9,7 +9,7 @@ function Mypage() {
     try {
       const res = await axios.get("http://localhost:3001/api/v1/users/me");
       console.log(res.data);
-      setUser(res.data.name);
+      setUser(res.data.data.name);
 
     } catch (error) {
       console.error("Error fetching user", error.response?.data);
