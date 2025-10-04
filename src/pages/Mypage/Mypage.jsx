@@ -8,6 +8,7 @@ function Mypage() {
   const fetchUser = async() => {
     try {
       const res = await axios.get("http://localhost:3001/api/v1/users/me");
+      console.log(res.data);
       setUser(res.data.user);
 
     } catch (error) {
