@@ -8,7 +8,6 @@ export default function Home() {
 
       <h2>🙈Search without login🙈</h2>
 
-      <h2>Sign up</h2>
       <Signup/>
 
       <h2>Log in</h2>

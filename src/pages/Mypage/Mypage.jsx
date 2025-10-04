@@ -9,7 +9,7 @@ function Mypage() {
     try {
       const res = await axios.get("http://localhost:3001/api/v1/users/me");
       console.log(res.data);
-      setUser(res.data.user);
+      setUser(res.data.name);
 
     } catch (error) {
       console.error("Error fetching user", error.response?.data);
@@ -26,7 +26,7 @@ function Mypage() {
       <div>
         <h1>Mypage</h1>
       </div>
-      <h2>Hi,{user}</h2>
+      <h2>Hi,{user ? `${user}` : `Guest`}</h2>
       <h2>Search a word</h2>
       <h2>List of my wordbooks</h2>
       <h2>Search history</h2>
