@@ -10,7 +10,7 @@ constfirstge = () => {
       setUser(res.data.user);
 
     } catch (error) {
-      console.error("Error fetching user");
+      console.error("Error fetching user", error.response?.data);
     }
   }
 
@@ -19,7 +19,7 @@ constfirstge = () => {
       <div>
         <h1>Mypage</h1>
       </div>
-      <h2>Hi,...</h2>
+      <h2>Hi,{user}</h2>
       <h2>Search a word</h2>
       <h2>List of my wordbooks</h2>
       <h2>Search history</h2>
