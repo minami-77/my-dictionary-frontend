@@ -1,10 +1,11 @@
 import axios from "axios"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-constfirstge = () => {
-  const [user, setUser] = useState("");
+function Mypage() {
+  // initial value is null since user info is an object
+  const [user, setUser] = useState(null);
 
-  const fetchUser = async(e) => {
+  const fetchUser = async() => {
     try {
       const res = await axios.get("http://localhost:3001/api/v1/users/me");
       setUser(res.data.user);
@@ -13,6 +14,11 @@ constfirstge = () => {
       console.error("Error fetching user", error.response?.data);
     }
   }
+
+  useEffect(()=>{
+    fetchUser();
+    // Need empty [] to execute once on mount
+  },[])
 
   return (
     <>
