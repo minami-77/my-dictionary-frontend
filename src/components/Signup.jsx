@@ -13,7 +13,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3001/users", {
+      const res = await axios.post("http://localhost:3001/api/v1/signup", {
         user: {
           name,
           email,
@@ -21,6 +21,13 @@ function Signup() {
           password_confirmation: passwordConfirmation,
         },
       });
+
+      // Get JWT token
+      const token = res.headers.authorization;
+      if (token){
+        // Save the token in localStorage to use API requests
+        localStorage.setItem("token", token);
+      }
 
       setMessage("✅ サインアップ成功！");
       navigate("/mypage");
