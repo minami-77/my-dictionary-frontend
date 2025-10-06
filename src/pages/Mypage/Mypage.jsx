@@ -7,7 +7,14 @@ function Mypage() {
 
   const fetchUser = async() => {
     try {
-      const res = await axios.get("http://localhost:3001/api/v1/users/me");
+      // Take out the JWT token
+      const token = localStorage.getItem("token");
+      // Axios
+      const res = await axios.get("http://localhost:3001/api/v1/users/me",{
+        headers: {
+          Authorization: `Bearer ${token}` ,
+        }
+      });
       console.log(res.data);
       setUser(res.data.data.name);
 

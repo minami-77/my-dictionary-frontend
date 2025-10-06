@@ -23,9 +23,20 @@ function Signup() {
       });
 
       // Get JWT token
-      const token = res.headers.authorization;
+      const header = res.headers?.authorization || res.headers?.Authorization;
+      let token = null;
+      if (header){
+        // "Bearer <token>" 形式なら token 部分だけ取る
+        if (header.startsWith('Bearer ')) {
+          token = header.split(' ')[1];
+        } else {
+        // すでにトークンだけが入っている場合
+        token = header;
+        }
+      }
+
+      // Save the token in localStorage to use API requests
       if (token){
-        // Save the token in localStorage to use API requests
         localStorage.setItem("token", token);
       }
 
