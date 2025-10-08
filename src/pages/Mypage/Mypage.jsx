@@ -16,7 +16,7 @@ function Mypage() {
         }
       });
       console.log(res.data);
-      setUser(res.data.data.name);
+      setUser(res.data.user.name);
 
     } catch (error) {
       console.error("Error fetching user", error.response?.data);
