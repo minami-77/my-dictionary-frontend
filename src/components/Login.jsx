@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 
 function Login() {
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ function Login() {
     try {
   const res = await axios.post("http://localhost:3001/api/v1/login", {
         user: {
-          name,
+          email,
           password,
         },
       });
@@ -52,7 +52,7 @@ function Login() {
     <div>
       <h2>Log in</h2>
       <form onSubmit={handleSubmit}>
-        <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
+        <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
         <button type="submit">Log in</button>
       </form>
