@@ -1,5 +1,6 @@
 import React from 'react'
 import Signup from '../../components/Signup'
+import Login from '../../components/Login'
 
 export default function Home() {
   return (
@@ -9,8 +10,7 @@ export default function Home() {
       <h2>🙈Search without login🙈</h2>
 
       <Signup/>
-
-      <h2>Log in</h2>
+      <Login/>
 
     </>
 
