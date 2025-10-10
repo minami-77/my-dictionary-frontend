@@ -11,11 +11,13 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-  const res = await axios.post("http://localhost:3001/api/v1/login", {
-        user: {
-          email,
-          password,
-        },
+      const res = await axios.post("http://localhost:3001/api/v1/login", {
+        session:{
+          user: {
+            email,
+            password,
+          }
+        }
       });
 
       // Get JWT token
