@@ -14,12 +14,17 @@ function Login() {
       const res = await axios.post("http://localhost:3001/api/v1/login", {
         user: {
           email,
-          password,
+          password
         }
       });
 
+      console.log("Full response:", res);
+      console.log("Headers:", res.headers);
+
       // Get JWT token
       const header = res.headers?.authorization || res.headers?.Authorization;
+      console.log("Auth header:", header);
+
       let token = null;
       if (header){
         // "Bearer <token>" 形式なら token 部分だけ取る
