@@ -50,6 +50,9 @@ function Login() {
       setMessage(err_message);
       // if there's no data from JSON(err.response.data), display html message(err.message)
       console.error("Error:", err.response?.data || err.message);
+      console.error("Status:", err.response?.status);
+      console.error("Data:", err.response?.data);
+      console.error("Headers:", err.response?.headers);
     }
   };
 
