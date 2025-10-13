@@ -1,10 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-
-
 export default function SaveWord(searchedResults) {
-  console.log(searchedResults);
   const [message, setMessage] = useState("");
 
   // Save the searched word to the user's wordbook
@@ -21,14 +18,16 @@ export default function SaveWord(searchedResults) {
       // Take out the JWT token
       const token = localStorage.getItem("token");
       // Axios
-      const req = await axios.post("http://localhost:3001/api/v1/word",{
+      const req = await axios.post("http://localhost:3001/api/v1/words",{
+        // pass the whole searchedResults object to rails
+        word_data: searchedResults
+      },{
+        // pass the token in the header(use Authorization key)
         headers: {
-          Authorization: `Bearer ${token}` ,
-        },
-        body: {
-          searchedResults
+          Authorization: `Bearer ${token}`
         }
       });
+
       setMessage("✅ Word saved to your wordbook!");
       console.log(req.data);
 
@@ -37,17 +36,13 @@ export default function SaveWord(searchedResults) {
       console.error("Error saving word", error.response?.data || error.message);
       return;
     }
-
   }
-
-
-
 
   return (
   <>
     <div>
       {searchedResults && localStorage.getItem("token") &&
-        <button onClick={()=>wordToSave}>Save this word</button>
+        <button onClick={()=>wordToSave(searchedResults)}>Save this word</button>
       }
       {!localStorage.getItem("token") &&
         <p>Login to save words</p>
