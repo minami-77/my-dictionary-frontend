@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from "react";
 import axios from "axios";
+import SaveWord from './SaveWord';
 
 export default function Search() {
   const [typedWord, setTypedWord] = useState("");
@@ -46,6 +47,8 @@ export default function Search() {
         value = {typedWord}
         onChange={(e)=>setTypedWord(e.target.value)} />
       <button onClick={handle_search}>Search</button>
+
+      <SaveWord searchedResults={searchResults}/>
 
       <div>
         <h3>Search Results:</h3>

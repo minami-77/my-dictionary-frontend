@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react";
+import Search from "../../components/Search";
 
 function Mypage() {
   // initial value is null since user info is an object
@@ -35,6 +36,8 @@ function Mypage() {
       </div>
       <h2>Hi,{user ? `${user}` : `Guest`}</h2>
       <h2>Search a word</h2>
+      <Search/>
+
       <h2>List of my wordbooks</h2>
       <h2>Search history</h2>
 
