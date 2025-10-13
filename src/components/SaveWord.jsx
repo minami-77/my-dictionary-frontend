@@ -52,6 +52,7 @@ export default function SaveWord(searchedResults) {
       {!localStorage.getItem("token") &&
         <p>Login to save words</p>
       }
+      {message && <p>{message}</p>}
     </div>
   </>
 
