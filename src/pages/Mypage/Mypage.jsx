@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react";
 import Search from "../../components/Search";
-
+import Logout from "../../components/Logout";
 function Mypage() {
   // initial value is null since user info is an object
   const [user, setUser] = useState(null);
@@ -40,6 +40,7 @@ function Mypage() {
 
       <h2>List of my wordbooks</h2>
       <h2>Search history</h2>
+      <Logout/>
 
     </>
   )
