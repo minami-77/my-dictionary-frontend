@@ -20,7 +20,28 @@ function Mypage() {
       setUser(res.data.user.name);
 
     } catch (error) {
-      console.error("Error fetching user", error.response?.data);
+      const fetchUser = async() => {
+        try {
+          // Take out the JWT token
+          const token = localStorage.getItem("token");
+          // Axios
+          const res = await axios.get("http://localhost:3001/api/v1/users/me",{
+            headers: {
+              Authorization: `Bearer ${token}` ,
+            }
+          });
+          console.log(res.data);
+          setUser(res.data.user.name);
+
+        } catch (error) {
+          // AxiosError or unknown error
+          if (axios.isAxiosError(error)) {
+            console.error("Error fetching user", error.response?.data);
+          } else {
+            console.error("Error fetching user", error);
+          }
+        }
+      }
     }
   }
 
