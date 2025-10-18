@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react";
-import Search from "../../components/Search";
-import Logout from "../../components/Logout";
+import Search from "../../components/Search.js";
+import Logout from "../../components/Logout.js";
 function Mypage() {
   // initial value is null since user info is an object
   const [user, setUser] = useState(null);

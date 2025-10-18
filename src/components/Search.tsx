@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from "react";
 import axios from "axios";
-import SaveWord from './SaveWord';
+import SaveWord from './SaveWord.js';
 
 export default function Search() {
   const [typedWord, setTypedWord] = useState("");
