@@ -4,9 +4,25 @@ import axios from "axios";
 import SaveWord from './SaveWord';
 
 export default function Search() {
-  const [typedWord, setTypedWord] = useState("");
-  const [searchResults, setSearchResults] = useState(null);
-  const [error, setError] = useState("");
+
+  // Define TypeScript types for the API response
+  type Word = {
+    word: string;
+    phonetic: string;
+    meanings: {
+      partOfSpeech: string;
+      definitions: {
+        definition: string;
+        example?: string;
+        synonyms?: string[];
+        antonyms?: string[];
+      }[];
+    }[];
+  };
+
+  const [typedWord, setTypedWord] = useState<string>("");
+  const [searchResults, setSearchResults] = useState<Word[]|null>(null);
+  const [error, setError] = useState<string>("");
 
   const handle_search= async() => {
     // Clear previous results and error messages
@@ -32,9 +48,13 @@ export default function Search() {
       }
 
     } catch (error) {
+      if (axios.isAxiosError(error)) {
         setError(error.response?.data?.message || "Error fetching word data");
         console.error("Error fetching word data", error.response?.data || error.message);
-        return;
+      } else {
+        setError("Unknown error occurred");
+        console.error("Error fetching word data", error);
+      }
     }
   }
 
@@ -55,7 +75,7 @@ export default function Search() {
         <ul>
           {error && <li>{error}</li>}
           {!error && searchResults &&
-            searchResults.map((item, index) => (
+            searchResults.map((item:Word, index:number) => (
               <li key={index}>
                 <strong>Word:</strong> {item.word} <br />
                 <strong>Phonetic:</strong> {item.phonetic} <br />
