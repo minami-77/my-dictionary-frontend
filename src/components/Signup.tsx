@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
@@ -10,7 +10,8 @@ function Signup() {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  // Designate the type of event as FormEvent
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:3001/api/v1/signup", {
@@ -45,10 +46,17 @@ function Signup() {
       console.log("Success:", res.data);
 
     } catch (err) {
-      const err_message = `❌ サインアップ失敗… ${err.response?.data?.status?.message}`
+      let err_message = "❌ サインアップ失敗…";
+      //  AxiosError or unknown error
+      if (axios.isAxiosError(err)) {
+        err_message += `${err.response?.data?.status?.message}`
+        // if there's no data from JSON(err.response.data), display html message(err.message)
+        console.error("Error:", err.response?.data || err.message);
+      } else {
+        err_message += `Unknown error occurred.`;
+        console.error("Error:", err);
+      }
       setMessage(err_message);
-      // if there's no data from JSON(err.response.data), display html message(err.message)
-      console.error("Error:", err.response?.data || err.message);
     }
   };
 
