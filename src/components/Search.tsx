@@ -21,8 +21,9 @@ export default function Search() {
   };
 
   const [typedWord, setTypedWord] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<Word[]|null>(null);
   const [error, setError] = useState<string>("");
+  // An array of type Word objects (Word[]) or null
+  const [searchResults, setSearchResults] = useState<Word[]|null>(null);
 
   const handle_search= async() => {
     // Clear previous results and error messages
