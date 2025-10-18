@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
@@ -8,7 +8,7 @@ function Login() {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:3001/api/v1/login", {
@@ -46,13 +46,19 @@ function Login() {
       console.log("Success:", res.data);
 
     } catch (err) {
-      const err_message = `❌ Login失敗… ${err.response?.data?.status?.message}`
-      setMessage(err_message);
-      // if there's no data from JSON(err.response.data), display html message(err.message)
-      console.error("Error:", err.response?.data || err.message);
-      console.error("Status:", err.response?.status);
-      console.error("Data:", err.response?.data);
-      console.error("Headers:", err.response?.headers);
+        if (axios.isAxiosError(err)) {
+          const err_message = `❌ Login失敗… ${err.response?.data?.status?.message}`
+          // if there's no data from JSON(err.response.data), display html message(err.message)
+          console.error("Error:", err.response?.data || err.message);
+          console.error("Status:", err.response?.status);
+          console.error("Data:", err.response?.data);
+          console.error("Headers:", err.response?.headers);
+          setMessage(err_message);
+        } else {
+          const err_message = `❌ Login失敗… Unknown error occurred.`;
+          console.error("Error:", err);
+          setMessage(err_message);
+        }
     }
   };
 
