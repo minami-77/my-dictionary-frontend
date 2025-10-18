@@ -1,7 +1,7 @@
 import React from 'react'
-import Signup from '../../components/Signup.js'
-import Login from '../../components/Login.js'
-import Search from '../../components/Search.js'
+import Signup from '../../components/Signup'
+import Login from '../../components/Login'
+import Search from '../../components/Search'
 
 export default function Home() {
   return (
