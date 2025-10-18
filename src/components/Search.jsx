@@ -41,7 +41,6 @@ export default function Search() {
 
   return (
     <>
-      <h2>Search</h2>
       <input type="text"
         placeholder="Type a word to search"
         value = {typedWord}
