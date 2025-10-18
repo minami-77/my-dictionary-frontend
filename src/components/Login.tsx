@@ -67,7 +67,7 @@ function Login() {
 
   return (
     <div>
-      <h2>Log in</h2>
+      <h2>💁Log in💁</h2>
       <form onSubmit={handleSubmit}>
         <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />

@@ -2,8 +2,6 @@ import axios from "axios"
 import { useEffect, useState } from "react";
 import Search from "../../components/Search";
 import Logout from "../../components/Logout";
-// shadcn-ui
-import { Button } from "@/components/ui/button"
 
 function Mypage() {
   // initial value is null since user info is an object

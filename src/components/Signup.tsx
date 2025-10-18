@@ -65,7 +65,7 @@ function Signup() {
 
   return (
     <div>
-      <h2>Sign Up</h2>
+      <h2>👶Sign Up👶</h2>
       <form onSubmit={handleSubmit}>
         <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
         <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
