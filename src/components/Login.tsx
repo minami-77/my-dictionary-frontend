@@ -1,6 +1,9 @@
 import { useState, type FormEvent } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
+// shadcn-ui
+import { Button } from "@/components/ui/button"
+
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -68,7 +71,8 @@ function Login() {
       <form onSubmit={handleSubmit}>
         <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-        <button type="submit">Log in</button>
+        <Button type="submit">Log in</Button>
+
       </form>
 
       {message && <p>{message}</p>}

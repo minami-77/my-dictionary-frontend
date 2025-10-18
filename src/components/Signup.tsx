@@ -1,6 +1,8 @@
 import { useState, type FormEvent } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
+// shadcn-ui
+import { Button } from "@/components/ui/button"
 
 function Signup() {
   const [name, setName] = useState("");
@@ -9,6 +11,7 @@ function Signup() {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+
 
   // Designate the type of event as FormEvent
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -68,7 +71,7 @@ function Signup() {
         <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
         <input type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} placeholder="Confirm Password" />
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Sign Up</Button>
       </form>
 
       {message && <p>{message}</p>}

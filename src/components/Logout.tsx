@@ -1,3 +1,6 @@
+// shadcn-ui
+import { Button } from "@/components/ui/button"
+
 export default function Logout() {
 
   const handleLogout = () => {
@@ -9,7 +12,7 @@ export default function Logout() {
 
   return (
     <>
-      <button onClick={handleLogout}>Log out</button>
+      <Button onClick={handleLogout}>Log out</Button>
     </>
   )
 }

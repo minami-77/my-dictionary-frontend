@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from "react";
 import axios from "axios";
 import SaveWord from './SaveWord';
+// shadcn-ui
+import { Button } from "@/components/ui/button"
 
 export default function Search() {
 
@@ -66,7 +68,7 @@ export default function Search() {
         placeholder="Type a word to search"
         value = {typedWord}
         onChange={(e)=>setTypedWord(e.target.value)} />
-      <button onClick={handle_search}>Search</button>
+      <Button onClick={handle_search}>Search</Button>
 
       <SaveWord searchedResults={searchResults}/>
 
