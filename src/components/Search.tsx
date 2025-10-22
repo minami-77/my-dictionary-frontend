@@ -4,6 +4,8 @@ import axios from "axios";
 import SaveWord from './SaveWord';
 // shadcn-ui
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+
 
 export default function Search() {
 
@@ -64,11 +66,14 @@ export default function Search() {
 
   return (
     <>
-      <input type="text"
-        placeholder="Type a word to search"
-        value = {typedWord}
-        onChange={(e)=>setTypedWord(e.target.value)} />
-      <Button variant="outline" onClick={handle_search}>Search</Button>
+      <div className="flex w-full max-w-sm items-center space-x-2">
+        <Input type="text"
+          placeholder="Type a word to search"
+          value = {typedWord}
+          onChange={(e)=>setTypedWord(e.target.value)} />
+        <Button variant="outline" onClick={handle_search}>Search</Button>
+      </div>
+
 
       <SaveWord searchedResults={searchResults}/>
 
