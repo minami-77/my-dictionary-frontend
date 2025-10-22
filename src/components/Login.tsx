@@ -27,9 +27,6 @@ function Login() {
   // no need to use useState for email and password
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-
-  const {register, handleSubmit} = useForm();
-
   // 2. Set up the form with react-hook-form and zod
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
