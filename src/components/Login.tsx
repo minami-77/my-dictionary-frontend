@@ -24,10 +24,11 @@ const formSchema = z.object({
 })
 
 function Login() {
+  // 2. State variables for form inputs
   // no need to use useState for email and password
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  // 2. Set up the form with react-hook-form and zod
+  // 3. Set up the form with react-hook-form and zod
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,6 +40,7 @@ function Login() {
   // 3. send login request to the backend
   // receive values of type inferred from formSchema(z.infer<typeof formSchema>)
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    // no need to write e.preventDefault();
     try {
       const res = await axios.post("http://localhost:3001/api/v1/login", {
         user: {
