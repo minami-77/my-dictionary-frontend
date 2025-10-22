@@ -68,7 +68,7 @@ export default function Search() {
         placeholder="Type a word to search"
         value = {typedWord}
         onChange={(e)=>setTypedWord(e.target.value)} />
-      <Button onClick={handle_search}>Search</Button>
+      <Button variant="outline" onClick={handle_search}>Search</Button>
 
       <SaveWord searchedResults={searchResults}/>
 
