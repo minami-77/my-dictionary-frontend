@@ -131,7 +131,7 @@ function Login() {
             )}
           />
 
-          <Button variant="secondary" type="submit">Submit</Button>
+          <Button variant="outline" type="submit">Submit</Button>
         </form>
       </Form>
         {message && <p>{message}</p>}

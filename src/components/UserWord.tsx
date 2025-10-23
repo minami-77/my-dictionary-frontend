@@ -3,22 +3,18 @@ import { useState, useEffect } from 'react'
 
 export default function UserWord() {
   // Define TypeScript types for the API response
-  type Words = [...Word[]];
-  type Word = {
-    word: string;
-    phonetic: string;
-    meanings: {
-      partOfSpeech: string;
-      definitions: {
-        definition: string;
-        example?: string;
-        synonyms?: string[];
-        antonyms?: string[];
-      }[];
-    }[];
+  type UserWords = [...UserWord[]];
+  type UserWord = {
+    word: {
+      spelling: string;
+      pronunciation: string;
+      language: string;
+      created_at: string;
+      updated_at: string;
+    };
   };
 
-  const [userWords, setUserWords] = useState<Words|null>(null);
+  const [userWords, setUserWords] = useState<UserWords|null>(null);
   const [token, setToken] = useState<string|null>("");
   const [error, setError] = useState("");
 
@@ -39,7 +35,8 @@ export default function UserWord() {
         }
       });
       console.log(res.data);
-      setUserWords(res.data);
+      console.log(res.data.data);
+      setUserWords(res.data.data);
 
     } catch (error) {
       // AxiosError or unknown error
@@ -63,8 +60,8 @@ export default function UserWord() {
       {error && <p>{error}</p>}
       <ul>
         {
-          userWords && userWords.map((item:Word, index:number)=>(
-            <li key={index}>{item.word}</li>
+          userWords && userWords.map((item:UserWord, index:number)=>(
+            <li key={index}>{item.word.spelling}</li>
           ))
         }
       </ul>

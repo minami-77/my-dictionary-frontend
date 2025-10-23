@@ -163,7 +163,7 @@ function Signup() {
                 </FormItem>
               )}
             />
-            <Button variant="secondary" type="submit">Submit</Button>
+            <Button variant="outline" type="submit">Submit</Button>
           </form>
         </Form>
 
