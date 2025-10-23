@@ -10,8 +10,14 @@ export default function Home() {
 
       <h5>🙈Search without login🙈</h5>
       <Search/>
-      <Signup/>
-      <Login/>
+      <div className="flex flex-row">
+        <div className="basis-1/2">
+          <Signup/>
+        </div>
+        <div className="basis-1/2">
+          <Login/>
+        </div>
+      </div>
 
     </>
 
