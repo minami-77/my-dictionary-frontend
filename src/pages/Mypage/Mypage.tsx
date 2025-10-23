@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react";
 import Search from "../../components/Search";
 import Logout from "../../components/Logout";
+import UserWord from "@/components/UserWord";
 
 function Mypage() {
   // initial value is null since user info is an object
@@ -54,12 +55,13 @@ function Mypage() {
   return (
     <>
       <div>
-        <h1>Mypage</h1>
+        <h2>Mypage</h2>
       </div>
       <h2>Hi,{user ? `${user}` : `Guest`}</h2>
       <h2>Search a word</h2>
       <Search/>
-
+      <h2>List of saved words</h2>
+      <UserWord/>
       <h2>List of my wordbooks</h2>
       <h2>Search history</h2>
       <Logout/>
