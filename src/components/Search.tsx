@@ -74,12 +74,8 @@ export default function Search() {
         <Button variant="outline" onClick={handle_search}>Search</Button>
       </div>
 
-
-      <SaveWord searchedResults={searchResults}/>
-
       <div>
         <h3>Search Results:</h3>
-
         <ul>
           {error && <li>{error}</li>}
           {!error && searchResults &&
@@ -116,8 +112,9 @@ export default function Search() {
             ))
           }
         </ul>
-
       </div>
+      {/* display save button if result exists */}
+      {searchResults && <SaveWord searchedResults={searchResults}/>}
 
     </>
   )

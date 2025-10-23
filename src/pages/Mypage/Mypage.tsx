@@ -55,12 +55,10 @@ function Mypage() {
   return (
     <>
       <div>
-        <h2>Mypage</h2>
+        <h1>Mypage</h1>
       </div>
-      <h2>Hi,{user ? `${user}` : `Guest`}</h2>
-      <h2>Search a word</h2>
+      <h1>Hi,{user ? `${user}` : `Guest`}</h1>
       <Search/>
-      <h2>List of saved words</h2>
       <UserWord/>
       <h2>List of my wordbooks</h2>
       <h2>Search history</h2>
