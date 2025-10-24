@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Search from "../../components/Search";
 import Logout from "../../components/Logout";
 import UserWord from "@/components/UserWord";
+import NaviMenu from "@/components/NaviMenu";
 
 function Mypage() {
   // initial value is null since user info is an object
@@ -58,10 +59,10 @@ function Mypage() {
         <h1>Mypage</h1>
       </div>
       <h1>Hi,{user ? `${user}` : `Guest`}</h1>
+      <NaviMenu />
+
       <Search/>
       <UserWord/>
-      <h2>List of my wordbooks</h2>
-      <h2>Search history</h2>
       <Logout/>
 
     </>

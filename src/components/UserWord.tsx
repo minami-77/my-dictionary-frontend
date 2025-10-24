@@ -26,7 +26,6 @@ export default function UserWord() {
     setToken(tokenFromStorage);
   }, []);
 
-
   // Fetch user's saved words from backend
   const fetchUserWords = async () => {
     try {
@@ -49,8 +48,11 @@ export default function UserWord() {
         console.error("Error fetching user's words", error);
       }
     }
-
   }
+
+  // useEffect(()=>{
+  //   fetchUserWords();
+  // },[])
 
 
   return (
