@@ -9,6 +9,7 @@ export default function UserWord() {
       spelling: string;
       pronunciation: string;
       language: string;
+      note: string;
       created_at: string;
       updated_at: string;
     };
