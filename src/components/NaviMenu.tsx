@@ -30,25 +30,37 @@ export default function NaviMenu() {
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <Link to="/mypage/userwords">
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            {/* <NavigationMenuTrigger>
+            </NavigationMenuTrigger> */}
+            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+              <Link to="/words">
                 My Words
+              </Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            {/* <NavigationMenuTrigger>
+            </NavigationMenuTrigger> */}
+            <NavigationMenuContent>
+              <NavigationMenuLink asChild>
+                <Link to="/wordbooks">
+                  My WordBooks
+                </Link>
               </NavigationMenuLink>
-            </Link>
+            </NavigationMenuContent>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuTrigger>My WordBooks</NavigationMenuTrigger>
-            {/* <NavigationMenuContent>
-              <NavigationMenuLink></NavigationMenuLink>
-            </NavigationMenuContent> */}
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Search History</NavigationMenuTrigger>
-            {/* <NavigationMenuContent>
-              <NavigationMenuLink></NavigationMenuLink>
-            </NavigationMenuContent> */}
+            {/* <NavigationMenuTrigger>
+            </NavigationMenuTrigger> */}
+            <NavigationMenuContent>
+              <NavigationMenuLink asChild>
+                <Link to="/history">
+                  Search History
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuContent>
           </NavigationMenuItem>
 
         </NavigationMenuList>

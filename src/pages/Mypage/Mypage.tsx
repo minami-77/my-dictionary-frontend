@@ -62,7 +62,7 @@ function Mypage() {
       <NaviMenu />
 
       <Search/>
-      <UserWord/>
+      {/* <UserWord/> */}
       <Logout/>
 
     </>

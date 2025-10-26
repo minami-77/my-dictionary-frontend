@@ -1,8 +1,24 @@
 import { useState } from "react";
 import axios from "axios";
+// shadcn-ui
+import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
+
 
 export default function SaveWord(searchedResults: any) {
   const [message, setMessage] = useState("");
+  const [note, setNote] = useState("");
 
   // Save the searched word to the user's wordbook
   // Only if the user is logged in (i.e., there's a token in localStorage)
@@ -20,7 +36,8 @@ export default function SaveWord(searchedResults: any) {
       // Axios
       const req = await axios.post("http://localhost:3001/api/v1/words",{
         // pass the whole searchedResults object to rails
-        word_data: searchedResults
+        word_data: searchedResults,
+        note: note
       },{
         // pass the token in the header(use Authorization key)
         headers: {
@@ -46,14 +63,46 @@ export default function SaveWord(searchedResults: any) {
   <>
     <div>
       {searchedResults && localStorage.getItem("token") &&
-        <button onClick={()=>wordToSave(searchedResults)}>Save this word</button>
+        // <button onClick={()=>wordToSave(searchedResults)}>Save this word</button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline">Save this word</Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Add Note to the Word</DialogTitle>
+              <DialogDescription>
+                You can add notes here.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                {/* <Label htmlFor="name" className="text-right">
+                  Note
+                </Label> */}
+                <Textarea placeholder="Type your notes here." className="col-span-4" onChange={(e) => setNote(e.target.value)}/>
+                {/* <Input
+                  id="name"
+                  defaultValue=""
+                  className="col-span-3"
+                /> */}
+              </div>
+            </div>
+            <DialogFooter>
+              <Button type="submit" onClick={()=>wordToSave(searchedResults)}>Save</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       }
+
       {!localStorage.getItem("token") &&
         <p>Login to save words</p>
       }
-      {message && <p>{message}</p>}
-    </div>
-  </>
 
+      {message && <p>{message}</p>}
+
+    </div>
+
+  </>
   )
 }

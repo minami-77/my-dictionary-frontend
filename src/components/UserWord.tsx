@@ -16,51 +16,53 @@ export default function UserWord() {
   };
 
   const [userWords, setUserWords] = useState<UserWords|null>(null);
-  const [token, setToken] = useState<string|null>("");
   const [error, setError] = useState("");
 
-
-   // Take out the JWT token on mount
+  // On component mount, fetch user's words
   useEffect(() => {
-    const tokenFromStorage = localStorage.getItem("token");
-    setToken(tokenFromStorage);
-  }, []);
+    // 1. Define the async function inside useEffect
+    const fetchUserWords = async () => {
 
-  // Fetch user's saved words from backend
-  const fetchUserWords = async () => {
-    try {
-      const res = await axios.get("http://localhost:3001/api/v1/user_words",{
-        headers: {
-          Authorization: `Bearer ${token}` ,
+      // Take out the JWT token on mount
+      const token = localStorage.getItem("token");
+      // if no token, return
+      if(!token){
+        setError("No token found. Please log in.");
+        return;
+      }
+
+      try {
+        const res = await axios.get("http://localhost:3001/api/v1/user_words",{
+          headers: {
+            Authorization: `Bearer ${token}` ,
+          }
+        });
+        console.log(res.data);
+        console.log(res.data.data);
+        setUserWords(res.data.data);
+      } catch (error) {
+        // AxiosError or unknown error
+        if (axios.isAxiosError(error)) {
+          setError(error.response?.data?.message || "Error fetching user's words");
+          console.error("Error fetching user's words", error.response?.data || error.message);
+        } else {
+          setError("Unknown error occurred");
+          console.error("Error fetching user's words", error);
         }
-      });
-      console.log(res.data);
-      console.log(res.data.data);
-      setUserWords(res.data.data);
-
-    } catch (error) {
-      // AxiosError or unknown error
-      if (axios.isAxiosError(error)) {
-        setError(error.response?.data?.message || "Error fetching user's words");
-        console.error("Error fetching user's words", error.response?.data || error.message);
-      } else {
-        setError("Unknown error occurred");
-        console.error("Error fetching user's words", error);
       }
     }
-  }
 
-  // useEffect(()=>{
-  //   fetchUserWords();
-  // },[])
+    // 2. Call the async function
+    fetchUserWords();
+  }, []);
 
 
   return (
     <>
       <div>List of User's Words</div>
-      {/* retrieve only titles */}
-      <button onClick={fetchUserWords}>Your Words</button>
-      {error && <p>{error}</p>}
+        {/* retrieve only titles */}
+        {error && <p>{error}</p>}
+
       <ul>
         {
           userWords && userWords.map((item:UserWord, index:number)=>(
@@ -68,7 +70,6 @@ export default function UserWord() {
           ))
         }
       </ul>
-
     </>
   )
 
