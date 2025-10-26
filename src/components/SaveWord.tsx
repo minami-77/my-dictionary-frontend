@@ -4,6 +4,7 @@ import axios from "axios";
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -77,19 +78,23 @@ export default function SaveWord(searchedResults: any) {
             </DialogHeader>
             <div className="grid gap-4 py-4">
               <div className="grid grid-cols-4 items-center gap-4">
-                {/* <Label htmlFor="name" className="text-right">
-                  Note
-                </Label> */}
-                <Textarea placeholder="Type your notes here." className="col-span-4" onChange={(e) => setNote(e.target.value)}/>
-                {/* <Input
-                  id="name"
-                  defaultValue=""
-                  className="col-span-3"
-                /> */}
+
+                <Textarea
+                  value={note}
+                  onChange={(e) => setNote(e.target.value)}
+                  placeholder="Type your notes here."
+                  className="col-span-4"
+                />
+
               </div>
             </div>
             <DialogFooter>
-              <Button type="submit" onClick={()=>wordToSave(searchedResults)}>Save</Button>
+              <DialogClose asChild>
+                <Button type="submit" onClick={()=>wordToSave(searchedResults)}>
+                  Save
+                </Button>
+              </DialogClose>
+
             </DialogFooter>
           </DialogContent>
         </Dialog>
