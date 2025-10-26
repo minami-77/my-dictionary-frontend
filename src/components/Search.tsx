@@ -66,7 +66,7 @@ export default function Search() {
 
   return (
     <>
-      <div className="flex w-full max-w-sm items-center space-x-2">
+      <div className="flex w-full max-w-sm items-center space-x-2 my-4">
         <Input type="text"
           placeholder="Type a word to search"
           value = {typedWord}
@@ -74,8 +74,15 @@ export default function Search() {
         <Button variant="outline" onClick={handle_search}>Search</Button>
       </div>
 
-      <div>
+      <div className="my-4">
         <h3>Search Results:</h3>
+
+
+{/* DATA TABLE is component? */}
+
+
+
+
         <ul>
           {error && <li>{error}</li>}
           {!error && searchResults &&

@@ -60,9 +60,7 @@ function Mypage() {
       </div>
       <h1>Hi,{user ? `${user}` : `Guest`}</h1>
       <NaviMenu />
-
       <Search/>
-      {/* <UserWord/> */}
       <Logout/>
 
     </>
