@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router';
 import './App.css'
 import Home from './pages/Home/Home';
 import Mypage from './pages/Mypage/Mypage';
-import UserWord from './components/UserWord';
+import UserWord from './components/user-words/UserWord';
 
 function App() {
   return (

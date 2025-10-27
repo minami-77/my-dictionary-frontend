@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react";
 import Search from "../../components/Search";
 import Logout from "../../components/Logout";
-import UserWord from "@/components/UserWord";
+import UserWord from "@/components/user-words/UserWord";
 import NaviMenu from "@/components/NaviMenu";
 
 function Mypage() {
