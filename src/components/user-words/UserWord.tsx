@@ -1,9 +1,12 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+// for data table
+import { columns } from "./columns"
+import { DataTable } from "./data-table"
 
 export default function UserWord() {
   // Define TypeScript types for the API response
-  type UserWords = [...UserWord[]];
+  type UserWords = UserWord[];
   type UserWord = {
     word: {
       spelling: string;
@@ -37,9 +40,9 @@ export default function UserWord() {
             Authorization: `Bearer ${token}` ,
           }
         });
+        setUserWords(res.data.data);
         console.log(res.data);
         console.log(res.data.data);
-        setUserWords(res.data.data);
       } catch (error) {
         // AxiosError or unknown error
         if (axios.isAxiosError(error)) {
@@ -70,6 +73,11 @@ export default function UserWord() {
           ))
         }
       </ul>
+
+      <div className="container mx-auto py-10">
+        <DataTable columns={columns} data={userWords ?? []} />
+      </div>
+
     </>
   )
 
