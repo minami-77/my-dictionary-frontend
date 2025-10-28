@@ -4,24 +4,57 @@ import { ColumnDef } from "@tanstack/react-table"
 // You can use a Zod schema here if you want.
 export type UserWord = {
   id: number
-  user_id: number
-  word_id: number
+  user: string
+  word: string
   note: string
+  pronunciation:string
+  definition:string
+  example: string|null
+  synonyms: [string]|null
+  antonym: [string]|null
   created_at: string
 }
 
 export const columns: ColumnDef<UserWord>[] = [
   {
-    accessorKey: "user-id",
-    header: "User-id",
-  },
-  {
-    accessorKey: "word-id",
-    header: "Word-id",
+    accessorKey: "id",
+    header: "Id",
   },
   {
     accessorKey: "note",
     header: "Note",
+  },
+  {
+    accessorKey: "name",
+    header: "Name",
+  },
+  {
+    accessorKey: "word",
+    header: "Word",
+  },
+  {
+    accessorKey: "pronunciation",
+    header: "Pronunciation",
+  },
+  {
+    accessorKey: "part_of_speech",
+    header: "Part_of_speech",
+  },
+  {
+    accessorKey: "definition",
+    header: "Definition",
+  },
+  {
+    accessorKey: "example",
+    header: "Example",
+  },
+  {
+    accessorKey: "synonyms",
+    header: "Synonyms",
+  },
+  {
+    accessorKey: "antonyms",
+    header: "Antonyms",
   },
   {
     accessorKey: "created_at",
