@@ -1,4 +1,4 @@
-import { ColumnDef } from "@tanstack/react-table"
+import type { ColumnDef } from "@tanstack/react-table"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -12,7 +12,6 @@ export type UserWord = {
   example: string|null
   synonyms: [string]|null
   antonym: [string]|null
-  created_at: string
 }
 
 export const columns: ColumnDef<UserWord>[] = [
@@ -55,9 +54,5 @@ export const columns: ColumnDef<UserWord>[] = [
   {
     accessorKey: "antonyms",
     header: "Antonyms",
-  },
-  {
-    accessorKey: "created_at",
-    header: "Added Date",
   },
 ]
