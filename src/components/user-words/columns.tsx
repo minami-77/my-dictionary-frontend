@@ -1,35 +1,28 @@
-import { ColumnDef } from "@tanstack/react-table"
+import type { ColumnDef } from "@tanstack/react-table"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 export type UserWord = {
   id: number
-  user: string
-  word: string
   note: string
+  user: string
+  // shadcn's Data table receive flatten data only (no nest allowed)
+  spelling:string
   pronunciation:string
   definition:string
   example: string|null
-  synonyms: [string]|null
-  antonym: [string]|null
+  synonyms: string|null
+  antonym: string|null
 }
 
 export const columns: ColumnDef<UserWord>[] = [
   {
-    accessorKey: "id",
-    header: "Id",
+    accessorKey: "spelling",
+    header: "Word",
   },
   {
     accessorKey: "note",
     header: "Note",
-  },
-  {
-    accessorKey: "name",
-    header: "Name",
-  },
-  {
-    accessorKey: "word",
-    header: "Word",
   },
   {
     accessorKey: "pronunciation",
@@ -46,13 +39,5 @@ export const columns: ColumnDef<UserWord>[] = [
   {
     accessorKey: "example",
     header: "Example",
-  },
-  {
-    accessorKey: "synonyms",
-    header: "Synonyms",
-  },
-  {
-    accessorKey: "antonyms",
-    header: "Antonyms",
   },
 ]

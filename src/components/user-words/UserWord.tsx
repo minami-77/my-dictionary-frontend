@@ -1,22 +1,21 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 // for data table
-import { columns } from "./columns"
+import { columns, type UserWord } from "./columns"
 import { DataTable } from "./data-table"
 
 export default function UserWord() {
   // Define TypeScript types for the API response
   type UserWords = UserWord[];
-  type UserWord = {
-    word: {
-      spelling: string;
-      pronunciation: string;
-      language: string;
-      note: string;
-      created_at: string;
-      updated_at: string;
-    };
-  };
+
+  // type UserWord = {
+  //   note: string
+  //   // receive flatten data from rails (no nest allowed)
+  //   spelling:string
+  //   pronunciation:string
+  //   definition:string
+  //   example: string|null
+  // };
 
   const [userWords, setUserWords] = useState<UserWords|null>(null);
   const [error, setError] = useState("");
@@ -66,13 +65,13 @@ export default function UserWord() {
         {/* retrieve only titles */}
         {error && <p>{error}</p>}
 
-      <ul>
+      {/* <ul>
         {
           userWords && userWords.map((item:UserWord, index:number)=>(
-            <li key={index}>{item.word.spelling}</li>
+            <li key={index}>{item.spelling}</li>
           ))
         }
-      </ul>
+      </ul> */}
 
       <div className="container mx-auto py-10">
         <DataTable columns={columns} data={userWords ?? []} />
