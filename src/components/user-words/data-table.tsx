@@ -2,12 +2,14 @@ import * as React from "react"
 
 import type{
   ColumnDef,
+  ColumnFiltersState,
   SortingState,
 } from "@tanstack/react-table"
 
 import {
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
@@ -23,6 +25,7 @@ import {
 } from "@/components/ui/table"
 
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -35,6 +38,11 @@ export function DataTable<TData, TValue>({
 }: DataTableProps<TData, TValue>) {
   // Sorting
   const [sorting, setSorting] = React.useState<SortingState>([])
+  // Filtering
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  )
+
   // Table data
   const table = useReactTable({
     data,
@@ -43,16 +51,32 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     // pagination
     getPaginationRowModel: getPaginationRowModel(),
-    // sorting
+    // sorting, filtering
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
+    onColumnFiltersChange: setColumnFilters,
+    getFilteredRowModel: getFilteredRowModel(),
     state: {
       sorting,
+      columnFilters,
     },
   })
 
   return (
     <div>
+      {/* filter */}
+      <div className="flex items-center py-4">
+        <Input
+          placeholder="Filter words..."
+          value={(table.getColumn("spelling")?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn("spelling")?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
+      </div>
+
+      {/* table */}
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -98,7 +122,7 @@ export function DataTable<TData, TValue>({
         </Table>
       </div>
 
-       {/* pagination */}
+      {/* pagination */}
       <div className="flex items-center justify-end space-x-2 py-4">
         <Button
           variant="outline"
