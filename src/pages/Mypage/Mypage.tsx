@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import Search from "../../components/Search";
 import Logout from "../../components/Logout";
 import UserWord from "@/components/user-words/UserWord";
+// shadcn/ui
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+
 import NaviMenu from "@/components/NaviMenu";
 
 function Mypage() {
@@ -59,8 +62,20 @@ function Mypage() {
         <h1>Mypage</h1>
       </div>
       <h1>Hi,{user ? `${user}` : `Guest`}</h1>
-      <NaviMenu />
-      <Search/>
+
+      <Tabs defaultValue="search" className="w-[400px]">
+        <TabsList>
+          <TabsTrigger value="search">Search</TabsTrigger>
+          <TabsTrigger value="mywords">My Words</TabsTrigger>
+          <TabsTrigger value="history">History</TabsTrigger>
+        </TabsList>
+        <TabsContent value="search"><Search/></TabsContent>
+        <TabsContent value="mywords"><UserWord/></TabsContent>
+        <TabsContent value="history">Search History</TabsContent>
+      </Tabs>
+
+
+
       <Logout/>
 
     </>

@@ -7,16 +7,6 @@ import { DataTable } from "./data-table"
 export default function UserWord() {
   // Define TypeScript types for the API response
   type UserWords = UserWord[];
-
-  // type UserWord = {
-  //   note: string
-  //   // receive flatten data from rails (no nest allowed)
-  //   spelling:string
-  //   pronunciation:string
-  //   definition:string
-  //   example: string|null
-  // };
-
   const [userWords, setUserWords] = useState<UserWords|null>(null);
   const [error, setError] = useState("");
 
@@ -62,16 +52,7 @@ export default function UserWord() {
   return (
     <>
       <div>List of User's Words</div>
-        {/* retrieve only titles */}
         {error && <p>{error}</p>}
-
-      {/* <ul>
-        {
-          userWords && userWords.map((item:UserWord, index:number)=>(
-            <li key={index}>{item.spelling}</li>
-          ))
-        }
-      </ul> */}
 
       <div className="container mx-auto py-10">
         <DataTable columns={columns} data={userWords ?? []} />
