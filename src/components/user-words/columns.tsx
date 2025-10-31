@@ -6,7 +6,10 @@ export type UserWord = {
   id: number
   note: string
   user: string
+  status: number
   // shadcn's Data table receive flatten data only (no nest allowed)
+  created_at: string
+  updated_at: string
   spelling:string
   pronunciation:string
   definition:string
@@ -21,23 +24,35 @@ export const columns: ColumnDef<UserWord>[] = [
     header: "Word",
   },
   {
+    accessorKey: "status",
+    header: "Status",
+  },
+  {
     accessorKey: "note",
     header: "Note",
-  },
-  {
-    accessorKey: "pronunciation",
-    header: "Pronunciation",
-  },
-  {
-    accessorKey: "part_of_speech",
-    header: "Part_of_speech",
   },
   {
     accessorKey: "definition",
     header: "Definition",
   },
   {
-    accessorKey: "example",
-    header: "Example",
+    accessorKey: "updated_at",
+    header: "Updated",
   },
+  {
+    accessorKey: "created_at",
+    header: "Created",
+  },
+  // {
+  //   accessorKey: "pronunciation",
+  //   header: "Pronunciation",
+  // },
+  // {
+  //   accessorKey: "part_of_speech",
+  //   header: "Part_of_speech",
+  // },
+  // {
+  //   accessorKey: "example",
+  //   header: "Example",
+  // },
 ]
