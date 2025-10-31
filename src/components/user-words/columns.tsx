@@ -1,4 +1,7 @@
 import type { ColumnDef } from "@tanstack/react-table"
+import { ArrowUpDown } from "lucide-react"
+import { Link } from 'react-router'
+import { Button } from "../ui/button"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -21,9 +24,20 @@ export type UserWord = {
 export const columns: ColumnDef<UserWord>[] = [
   {
     accessorKey: "spelling",
-    header: "Word",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Word
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
     cell: ({row}) => {
-      return <div className="text-left">{row.getValue("spelling")}</div>
+      const word = row.getValue("spelling")
+      return <div className="text-left"><Link to = "/words">{word as string}</Link></div>
     }
   },
   {
