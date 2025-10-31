@@ -22,6 +22,9 @@ export const columns: ColumnDef<UserWord>[] = [
   {
     accessorKey: "spelling",
     header: "Word",
+    cell: ({row}) => {
+      return <div className="text-left">{row.getValue("spelling")}</div>
+    }
   },
   {
     accessorKey: "status",
@@ -30,19 +33,41 @@ export const columns: ColumnDef<UserWord>[] = [
   {
     accessorKey: "note",
     header: "Note",
+    cell: ({row}) => {
+      return <div className="text-left">{row.getValue("note")}</div>
+    }
   },
   {
     accessorKey: "definition",
     header: "Definition",
+    cell: ({row}) => {
+      return <div className="text-left">{row.getValue("definition")}</div>
+    }
   },
   {
     accessorKey: "updated_at",
     header: "Updated",
+    cell: ({row}) => {
+      const date = new Date(row.getValue("updated_at"))
+      const month = date.getMonth();
+      const day = date.getDay();
+      const formattedDay = (month+1) + "/" + (day+1)
+      return <div>{formattedDay}</div>
+    }
   },
   {
     accessorKey: "created_at",
     header: "Created",
+    cell: ({row}) => {
+      const date = new Date(row.getValue("created_at"))
+      const month = date.getMonth();
+      const day = date.getDay();
+      const formattedDay = (month+1) + "/" + (day+1)
+      return <div>{formattedDay}</div>
+    }
   },
+
+
   // {
   //   accessorKey: "pronunciation",
   //   header: "Pronunciation",
