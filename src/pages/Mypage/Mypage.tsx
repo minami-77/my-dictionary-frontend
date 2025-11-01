@@ -5,8 +5,7 @@ import Logout from "../../components/Logout";
 import UserWord from "@/components/user-words/UserWord";
 // shadcn/ui
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-
-import NaviMenu from "@/components/NaviMenu";
+// import NaviMenu from "@/components/NaviMenu";
 
 function Mypage() {
   // initial value is null since user info is an object

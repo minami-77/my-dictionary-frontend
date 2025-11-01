@@ -51,8 +51,10 @@ export default function UserWord() {
 
   return (
     <>
-      <div>List of User's Words</div>
+    {/* List of User's Words */}
+      <div>
         {error && <p>{error}</p>}
+      </div>
 
       <div className="container mx-auto py-10">
         <DataTable columns={columns} data={userWords ?? []} />

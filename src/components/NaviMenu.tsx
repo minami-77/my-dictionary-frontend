@@ -33,7 +33,7 @@ export default function NaviMenu() {
             {/* <NavigationMenuTrigger>
             </NavigationMenuTrigger> */}
             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <Link to="/words">
+              <Link to="/mypage/words">
                 My Words
               </Link>
             </NavigationMenuLink>

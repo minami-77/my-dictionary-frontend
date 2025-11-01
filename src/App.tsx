@@ -1,8 +1,12 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { useParams } from "react-router";
 import './App.css'
 import Home from './pages/Home/Home';
 import Mypage from './pages/Mypage/Mypage';
-import UserWord from './components/user-words/UserWord';
+import WordsDetails from './pages/WordsDetails';
+// import { columns} from "./components/user-words/columns"
+// import UserWord from "./components/user-words/UserWord";
+
 
 function App() {
   return (
@@ -10,7 +14,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="mypage" element={<Mypage/>}/>
-      <Route path="words" element={<UserWord/>}/>
+      {/* define :word as a parameter of useParams*/}
+      <Route path="mypage/word_details/:word" element={<WordsDetails/>}/>
       <Route/>
 
     </Routes>

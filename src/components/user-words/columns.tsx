@@ -2,6 +2,7 @@ import type { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
 import { Link } from 'react-router'
 import { Button } from "../ui/button"
+import { useParams } from "react-router";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -37,7 +38,14 @@ export const columns: ColumnDef<UserWord>[] = [
     },
     cell: ({row}) => {
       const word = row.getValue("spelling")
-      return <div className="text-left"><Link to = "/words">{word as string}</Link></div>
+      return <div className="text-left">
+        <Link
+          to = {{
+            pathname: `/mypage/word_details/${word}`,
+          }}
+        >
+          {word as string}
+        </Link></div>
     }
   },
   {
