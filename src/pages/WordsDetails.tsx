@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 
 
@@ -29,6 +29,7 @@ const WordsDetails = () => {
   const {word}= useParams();
   const [wordDetails, setWordDetails] = useState<WordDetails|null>(null);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
  // On component mount, fetch user's words
   useEffect(() => {
@@ -65,6 +66,18 @@ const WordsDetails = () => {
     fetchWordDetails();
   },[])
 
+  const clickBack = () => {
+    navigate(-1);
+  }
+
+
+// const formattedDay {
+//   const date = await setWordDetails
+//     const day = wordDetails?.created_at.getDay()
+//     const month = date.getMonth();
+//     const formattedDay = (month+1) + "/" + (day+1)
+//   }
+
   return (
     <>
       <div>
@@ -96,7 +109,7 @@ const WordsDetails = () => {
         }
       </div>
       <div>
-        <Button>Back</Button>
+        <Button onClick={clickBack}>Back</Button>
       </div>
     </>
   );
