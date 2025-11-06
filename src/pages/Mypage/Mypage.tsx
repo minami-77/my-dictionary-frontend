@@ -62,16 +62,20 @@ function Mypage() {
       </div>
       <h1>Hi,{user ? `${user}` : `Guest`}</h1>
 
-      <Tabs defaultValue="search" className="w-[400px]">
-        <TabsList>
-          <TabsTrigger value="search">Search</TabsTrigger>
-          <TabsTrigger value="mywords">My Words</TabsTrigger>
-          <TabsTrigger value="history">History</TabsTrigger>
-        </TabsList>
-        <TabsContent value="search"><Search/></TabsContent>
-        <TabsContent value="mywords"><UserWord/></TabsContent>
-        <TabsContent value="history">Search History</TabsContent>
-      </Tabs>
+      <div className="flex w-full max-w-sm items-center space-x-2 my-4">
+        <Tabs defaultValue="search" className="w-[400px]">
+          <div className="w-full max-w-sm items-center space-x-2 my-4">
+            <TabsList>
+              <TabsTrigger value="search">Search</TabsTrigger>
+              <TabsTrigger value="mywords">My Words</TabsTrigger>
+              <TabsTrigger value="history">History</TabsTrigger>
+            </TabsList>
+            <TabsContent value="search"><Search/></TabsContent>
+            <TabsContent value="mywords"><UserWord/></TabsContent>
+            <TabsContent value="history"></TabsContent>
+          </div>
+        </Tabs>
+      </div>
 
 
 
