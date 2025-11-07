@@ -104,7 +104,9 @@ export default function SaveWord(searchedResults: any) {
         <p>Login to save words</p>
       }
 
-      {message && <p>{message}</p>}
+      <div className="text-xl p-4">
+        {message && <p><strong>{message}</strong></p>}
+      </div>
 
     </div>
 

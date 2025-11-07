@@ -30,6 +30,9 @@ const WordsDetails = () => {
   const [wordDetails, setWordDetails] = useState<WordDetails|null>(null);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [createdDate, setCreatedDate] = useState<string>("")
+  const [updatedDate, setUpdatedDate] = useState("")
+
 
  // On component mount, fetch user's words
   useEffect(() => {
@@ -49,6 +52,16 @@ const WordsDetails = () => {
               }
         });
         setWordDetails(res.data.data);
+
+        let c_day=res.data.data.created_at.getDay();
+        let c_month=res.data.data.created_at.getMonth();
+        let c_date=(c_month+1) + "/" + (c_day+1)
+        let u_day=res.data.data.updated_at.getDay();
+        let u_month=res.data.data.updated_at.getMonth();
+        let u_date=(u_month+1) + "/" + (u_day+1)
+        setCreatedDate(c_date);
+        setUpdatedDate(u_date);
+
         console.log(res.data)
 
       } catch (error) {
@@ -70,14 +83,6 @@ const WordsDetails = () => {
     navigate(-1);
   }
 
-
-// const formattedDay {
-//   const date = await setWordDetails
-//     const day = wordDetails?.created_at.getDay()
-//     const month = date.getMonth();
-//     const formattedDay = (month+1) + "/" + (day+1)
-//   }
-
   return (
     <>
       <div>
@@ -89,8 +94,10 @@ const WordsDetails = () => {
 
         <p>Status:{wordDetails?.status}</p>
         <p>Note:{wordDetails?.note}</p>
-        <p>{wordDetails?.created_at}</p>
-        <p>{wordDetails?.updated_at}</p>
+        <p>Created:{createdDate?.createdDate}</p>
+        <p>Updated:{updatedDate?.updatedDate}</p>
+
+        {/* <p>{wordDetails?.updated_at}</p> */}
         <br/>
 
         {wordDetails?.part_of_speeches &&
