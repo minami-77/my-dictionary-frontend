@@ -82,25 +82,33 @@ const WordsDetails = () => {
     <>
       <div>
         <p>Details of the word</p>
-        <h1>{word}</h1>
-        <p>{wordDetails?.pronunciation}</p>
-        <p>{wordDetails?.status}</p>
-        <p>{wordDetails?.note}</p>
+        <div className="p-4 text-3xl">
+          <p><strong>{word}</strong></p>
+          <p><small>{wordDetails?.pronunciation}</small></p>
+        </div>
+
+        <p>Status:{wordDetails?.status}</p>
+        <p>Note:{wordDetails?.note}</p>
         <p>{wordDetails?.created_at}</p>
         <p>{wordDetails?.updated_at}</p>
+        <br/>
+
         {wordDetails?.part_of_speeches &&
               wordDetails.part_of_speeches.map((pos,i)=>(
                 // wrapper needed (Each .map() returns a single parent element.)
-                <div key={i}>
-                  <h1>{pos.part_of_speech}</h1>
+                <div key={i} className="text-left">
+                  <div className="text-2xl">
+                    <p><strong>{pos.part_of_speech}</strong></p>
+                  </div>
                   <ol>
                     {pos.definitions.map((defn,j)=>(
                       // wrapper needed (Each .map() returns a single parent element.)
                       <li key={j}>
-                        <div>{defn.definition}</div>
-                        <div>{defn.example&& defn.example}</div>
-                        <div>{defn.synonyms&& defn.synonyms.join(", ")}</div>
-                        <div>{defn.antonyms&& defn.antonyms.join(", ")}</div>
+                        <p><strong>{j + 1}. </strong>{defn.definition}</p>
+                        <p>{defn.example&& defn.example}</p>
+                        <p>{defn.synonyms&& defn.synonyms.join(", ")}</p>
+                        <p>{defn.antonyms&& defn.antonyms.join(", ")}</p>
+                        <br/>
                       </li>
                     ))}
                   </ol>

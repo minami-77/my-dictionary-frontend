@@ -77,21 +77,26 @@ export default function Search() {
         </div>
 
         <div className="my-4">
-          <h3>Search Results:</h3>
-
           <ul>
             {error && <li>{error}</li>}
             {!error && searchResults &&
               searchResults.map((item:Word, index:number) => (
                 <li key={index}>
-                  <strong>Word:</strong> {item.word} <br />
-                  <strong>Phonetic:</strong> {item.phonetic} <br />
+                  <div className="p-4 text-3xl">
+                    <p><strong>{item.word}</strong></p>
+                    <p><small>{item.phonetic}</small></p>
+                  </div>
+
                   {item.meanings.map((meaning, mIndex) => (
                     <div key={mIndex} >
-                      <strong>Part of Speech:</strong> {meaning.partOfSpeech} <br />
+
+                      <div className="p-4 text-2xl text-left">
+                        <strong>{meaning.partOfSpeech}</strong>  <br />
+                      </div>
+
                       {meaning.definitions.map((def, dIndex) => (
-                        <div key={dIndex} >
-                          <strong>Definition {dIndex + 1}:</strong> {def.definition} <br />
+                        <div key={dIndex} className="text-left">
+                          <p><strong>{dIndex + 1}. </strong>{def.definition}</p>
                           {def.example && (
                             <>
                               <strong>Example:</strong> {def.example} <br />
