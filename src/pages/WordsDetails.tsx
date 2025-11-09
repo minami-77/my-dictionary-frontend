@@ -57,12 +57,12 @@ const WordsDetails = () => {
         const createdAt = new Date(res.data.data.created_at);
         const updatedAt = new Date(res.data.data.updated_at);
 
-        let c_day=createdAt.getDay();
+        let c_day=createdAt.getDate();
         let c_month=createdAt.getMonth();
-        let c_date=`${c_month+1}/${c_day+1}`
-        let u_day=updatedAt.getDay();
+        let c_date=`${c_month+1}/${c_day}`
+        let u_day=updatedAt.getDate();
         let u_month=updatedAt.getMonth();
-        let u_date=`${u_month+1}/${u_day+1}`
+        let u_date=`${u_month+1}/${u_day}`
         setCreatedDate(c_date);
         setUpdatedDate(u_date);
 
