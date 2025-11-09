@@ -72,8 +72,8 @@ export const columns: ColumnDef<UserWord>[] = [
     cell: ({row}) => {
       const date = new Date(row.getValue("updated_at"))
       const month = date.getMonth();
-      const day = date.getDay();
-      const formattedDay = (month+1) + "/" + (day+1)
+      const day = date.getDate();
+      const formattedDay = (month+1) + "/" + (day)
       return <div>{formattedDay}</div>
     }
   },
@@ -83,8 +83,8 @@ export const columns: ColumnDef<UserWord>[] = [
     cell: ({row}) => {
       const date = new Date(row.getValue("created_at"))
       const month = date.getMonth();
-      const day = date.getDay();
-      const formattedDay = (month+1) + "/" + (day+1)
+      const day = date.getDate();
+      const formattedDay = (month+1) + "/" + (day)
       return <div>{formattedDay}</div>
     }
   },
