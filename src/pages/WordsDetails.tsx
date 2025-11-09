@@ -53,12 +53,16 @@ const WordsDetails = () => {
         });
         setWordDetails(res.data.data);
 
-        let c_day=res.data.data.created_at.getDay();
-        let c_month=res.data.data.created_at.getMonth();
-        let c_date=(c_month+1) + "/" + (c_day+1)
-        let u_day=res.data.data.updated_at.getDay();
-        let u_month=res.data.data.updated_at.getMonth();
-        let u_date=(u_month+1) + "/" + (u_day+1)
+        // 文字列をDateオブジェクトに変換
+        const createdAt = new Date(res.data.data.created_at);
+        const updatedAt = new Date(res.data.data.updated_at);
+
+        let c_day=createdAt.getDay();
+        let c_month=createdAt.getMonth();
+        let c_date=`${c_month+1}/${c_day+1}`
+        let u_day=updatedAt.getDay();
+        let u_month=updatedAt.getMonth();
+        let u_date=`${u_month+1}/${u_day+1}`
         setCreatedDate(c_date);
         setUpdatedDate(u_date);
 
@@ -94,8 +98,8 @@ const WordsDetails = () => {
 
         <p>Status:{wordDetails?.status}</p>
         <p>Note:{wordDetails?.note}</p>
-        <p>Created:{createdDate?.createdDate}</p>
-        <p>Updated:{updatedDate?.updatedDate}</p>
+        <p>Created:{createdDate}</p>
+        <p>Updated:{updatedDate}</p>
 
         {/* <p>{wordDetails?.updated_at}</p> */}
         <br/>
