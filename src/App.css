@@ -1,3 +1,5 @@
+/* schadcn/ui default */
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -84,6 +86,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* color scheme : light */
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -119,6 +122,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+/* color scheme dark */
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
