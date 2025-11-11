@@ -158,7 +158,8 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-/* a set of custom styles  */
+/* @layer : a set of custom styles  */
+/* @apply :  inline any existing utility classes into your own custom CSS */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -168,7 +169,7 @@
   }
 
   a {
-    @apply text-primary font-medium hover:text-primary/80 transition-colors;
+    @apply text-sky-700 font-medium hover:text-primary/80 transition-colors;
   }
 
   h1 {
