@@ -62,9 +62,9 @@ function Mypage() {
       </div>
       <h1>Hi,{user ? `${user}` : `Guest`}</h1>
 
-      <div className="flex w-full max-w-sm items-center space-x-2 my-4">
-        <Tabs defaultValue="search" className="w-[400px]">
-          <div className="w-full max-w-sm items-center space-x-2 my-4">
+      <div className="flex w-full justify-center items-center space-x-2 my-4">
+        <Tabs defaultValue="search" className="max-w-sm md:max-w-lg lg:max-w-xl">
+          <div className="w-full justify-center items-center space-x-2 my-4">
             <TabsList>
               <TabsTrigger value="search">Search</TabsTrigger>
               <TabsTrigger value="mywords">My Words</TabsTrigger>

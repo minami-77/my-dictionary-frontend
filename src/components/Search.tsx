@@ -68,7 +68,7 @@ export default function Search() {
     <>
       <div className="bg-cyan-200 p-4 my-4">
 
-        <div className="flex w-full max-w-sm items-center space-x-2 my-4">
+        <div className="flex w-full justify-center items-center space-x-2 my-4">
           <Input type="text"
             placeholder="Type a word to search"
             value = {typedWord}
